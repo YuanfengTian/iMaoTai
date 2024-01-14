@@ -42,10 +42,11 @@ CREDENTIALS_PATH = None
 为了解决credentials中手机号和token都暴露的问题,采用AES私钥加密,保障账号安全.
 这里采用ECB,没有采用CBC.如果是固定iv,那加一层也没多大意义;如果是不固定iv,那每次添加账号判重的时候都认为不一样,除非你每次再把配置全部反解密,去校验去重,得不偿失.
 key用了SHA-256转化,所以这里可以配置任意字符串,不用遵守AES算法要求密钥长度必须是16、24或32字节
-如果不会配置环境变量(建议学习)、不care安全性、非开源运行,你可以在这里明文指定,eg:PRIVATE_AES_KEY = '666666'
+如果不会配置环境变量(建议学习)、不care安全性、非开源运行,你可以在这里明文指定,eg:PRIVATE_AES_KEY = '666666'PRIVATE_AES_KEY = os.environ.get("PRIVATE_AES_KEY")
 ps:本来是写了判断是否配置密钥，可以自由选择明文保存的方式。但是还是为了安全性，限制了必须使用AES加密。哪怕是明文密钥。
 '''
-PRIVATE_AES_KEY = os.environ.get("PRIVATE_AES_KEY")
+PRIVATE_AES_KEY = '666666'
+
 
 
 '''
